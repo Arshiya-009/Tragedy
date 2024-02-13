@@ -1,7 +1,7 @@
 import express from 'express';
 import { PORT, mongoDBURL } from './config.js';
-import { Book } from './models/bookModel.js';
-// import mongoose from 'mongoose';
+import { Book } from './Model/bookModel.js';
+import mongoose from 'mongoose';
 // import booksRoute from './routes/booksRoute.js';
 // import cors from 'cors';
 
@@ -23,6 +23,6 @@ mongoose
       console.log(`App is listening to port: ${PORT}`);
     });
   })
-  .catch((error) => {
+  .catch((error) => { VB
     console.log(error);
   });
