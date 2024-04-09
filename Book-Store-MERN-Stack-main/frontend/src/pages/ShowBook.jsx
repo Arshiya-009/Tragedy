@@ -55,6 +55,10 @@ const ShowBook = () => {
             <span className='text-xl mr-4 text-gray-500'>Last Update Time</span>
             <span>{new Date(book.updatedAt).toString()}</span>
           </div>
+          <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Image</span>
+            <img src={`http://localhost:5555/${book.title}.jpg`} width="250px" alt="" />
+          </div>
         </div>
       )}
     </div>

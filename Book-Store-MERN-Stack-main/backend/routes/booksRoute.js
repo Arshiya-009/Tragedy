@@ -1,9 +1,29 @@
 import express from 'express';
 import { Book } from '../models/bookModel.js';
-
+import multer from 'multer';
+import path from 'node:path';
+import { log } from 'node:console';
 const router = express.Router();
 
-// Route for Save a new Book
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname) //Appending extension
+  }
+})
+const upload = multer({ storage })
+
+// const multerMiddleware = (request,response,next){
+
+// };
+
+router.post('/upload', upload.single("image"), async (request, response) => {
+  request.file.filename = Date.now() + path.extname(request.file.originalname);
+  return response.status(200).send("File uploaded successfully!");
+});
+
 router.post('/', async (request, response) => {
   try {
     if (
@@ -30,10 +50,19 @@ router.post('/', async (request, response) => {
   }
 });
 
-// Route for Get All Books from database
 router.get('/', async (request, response) => {
   try {
-    const books = await Book.find({});
+    let books;
+    let query = {};
+    if (request.query.title) {
+     query.title = { "$regex": request.query.title, "$options": "i" };
+    }
+    if (request.query.author) {
+      query.author = { "$regex": request.query.author, "$options": "i" };
+     }
+     
+      books = await Book.find(query);
+
 
     return response.status(200).json({
       count: books.length,
@@ -45,7 +74,6 @@ router.get('/', async (request, response) => {
   }
 });
 
-// Route for Get One Book from database by id
 router.get('/:id', async (request, response) => {
   try {
     const { id } = request.params;
@@ -59,7 +87,6 @@ router.get('/:id', async (request, response) => {
   }
 });
 
-// Route for Update a Book
 router.put('/:id', async (request, response) => {
   try {
     if (
@@ -87,7 +114,6 @@ router.put('/:id', async (request, response) => {
   }
 });
 
-// Route for Delete a book
 router.delete('/:id', async (request, response) => {
   try {
     const { id } = request.params;

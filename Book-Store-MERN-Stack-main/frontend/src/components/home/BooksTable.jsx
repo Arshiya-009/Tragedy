@@ -16,7 +16,9 @@ const BooksTable = ({ books }) => {
           <th className='border border-slate-600 rounded-md max-md:hidden'>
             Publish Year
           </th>
+          <th className='border border-slate-600 rounded-md'>Image</th>
           <th className='border border-slate-600 rounded-md'>Operations</th>
+
         </tr>
       </thead>
       <tbody>
@@ -34,6 +36,12 @@ const BooksTable = ({ books }) => {
             <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
               {book.publishYear}
             </td>
+            <td className='border border-slate-700 rounded-md text-center max-md:hidden'>
+              <center className='my-padding'>
+                <img src={`http://localhost:5555/${book.title}.jpg`} width="100px" alt="" />               
+              </center>
+            </td>
+
             <td className='border border-slate-700 rounded-md text-center'>
               <div className='flex justify-center gap-x-4'>
                 <Link to={`/books/details/${book._id}`}>
