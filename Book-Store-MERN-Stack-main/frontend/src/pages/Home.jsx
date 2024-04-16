@@ -7,16 +7,24 @@ import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 import BooksTable from '../components/home/BooksTable';
 import BooksCard from '../components/home/BooksCard';
+import SearchBox from '../components/home/SearchBox';
+import { useSearchParams } from "react-router-dom";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [searchParams] = useSearchParams();
   const [showType, setShowType] = useState('table');
+  const title = searchParams.get("q");
 
   useEffect(() => {
+    let url  = 'http://localhost:5555/books';
+    if(title){
+      url = `http://localhost:5555/books?title=${title}`;
+    }
     setLoading(true);
     axios
-      .get('http://localhost:5555/books')
+      .get(url)
       .then((response) => {
         setBooks(response.data.data);
         setLoading(false);
@@ -43,12 +51,16 @@ const Home = () => {
           Card
         </button>
       </div>
+
       <div className='flex justify-between items-center'>
         <h1 className='text-3xl my-8'>Books List</h1>
+
         <Link to='/books/create'>
           <MdOutlineAddBox className='text-sky-800 text-4xl' />
         </Link>
       </div>
+      <SearchBox></SearchBox>
+
       {loading ? (
         <Spinner />
       ) : showType === 'table' ? (
