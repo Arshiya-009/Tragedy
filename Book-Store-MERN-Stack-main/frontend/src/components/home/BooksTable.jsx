@@ -59,6 +59,7 @@ const BooksTable = ({ books }) => {
         ))}
       </tbody>
     </table>
+ 
   );
 };
 
