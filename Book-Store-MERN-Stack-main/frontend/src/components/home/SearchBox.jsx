@@ -11,7 +11,7 @@ const SearchBox = ({  }) => {
     <div>
         <form class='search-form' id="form">
      <input type="search" id="query" name="q" placeholder="Search..." class='search-input'></input>
-     <button>Search</button>
+     <button id='searchbtn'>Search</button>
      </form>
     </div>
   );

@@ -55,13 +55,13 @@ router.get('/', async (request, response) => {
     let books;
     let query = {};
     if (request.query.title) {
-     query.title = { "$regex": request.query.title, "$options": "i" };
+      query = {
+        $or: [{ title: { "$regex": request.query.title, "$options": "i" } },
+           { author: { "$regex": request.query.title, "$options": "i" } }]
+      }
     }
-    if (request.query.author) {
-      query.author = { "$regex": request.query.author, "$options": "i" };
-     }
-     
-      books = await Book.find(query);
+
+    books = await Book.find(query);
 
 
     return response.status(200).json({

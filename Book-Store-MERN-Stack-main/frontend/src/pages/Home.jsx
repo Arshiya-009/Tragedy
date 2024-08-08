@@ -16,11 +16,12 @@ const Home = () => {
   const [searchParams] = useSearchParams();
   const [showType, setShowType] = useState('table');
   const title = searchParams.get("q");
+  const author = searchParams.get("p");
 
   useEffect(() => {
     let url  = 'http://localhost:5555/books';
     if(title){
-      url = `http://localhost:5555/books?title=${title}`;
+      url = `http://localhost:5555/books?title=${title}&author=${author}`;
     }
     setLoading(true);
     axios
@@ -38,14 +39,14 @@ const Home = () => {
   return (
     <div className='p-4'>
       <div className='flex justify-center items-center gap-x-4'>
-        <button
-          className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'
+        <button 
+          className=' mahdyiarbtn bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'
           onClick={() => setShowType('table')}
         >
           Table
         </button>
         <button
-          className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'
+          className='mahdyiarbtn bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'
           onClick={() => setShowType('card')}
         >
           Card

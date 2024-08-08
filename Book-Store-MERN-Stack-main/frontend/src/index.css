@@ -36,7 +36,7 @@
     src: url('assets/fonts/Vazir.ttf') format('truetype');
   }
   body, html {
-    background-color: #d0e3f5;
+    background-color: #021526;
     height: 100%;
     font-family: Vazir;
   }
@@ -54,4 +54,56 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
-  
+  th {
+    color: wheat!important;
+    background-color: #2a5383!important;
+  }
+
+  td {
+    background-color: wheat!important;
+    color: #2a5383!important;
+  }
+
+  #root{
+    background-color: #021526;
+  }
+  h1{
+    color: wheat;
+  }
+
+  .mahdyiarbtn{
+    background-color: #2a5383;;
+    color: wheat;
+  }
+  h2{
+    color:wheat;
+  }
+  #form {
+    color: #2a5383;
+    background-color: wheat;
+    padding-right: 0; 
+    border-bottom-right-radius: 60px 60px;
+    border-top-right-radius: 60px 60px;
+    border-top-left-radius: 60px 60px;
+    border-top-left-radius: 60px 60px;
+    margin-bottom: 30px;
+  }
+  #query{
+    color: #2a5383;
+    /* margin-bottom: 10px; */
+
+  }
+
+  #searchbtn{
+    background-color: #2a5383;;
+    color: wheat;
+    height: 100% ;
+    width: 50%;
+    border-radius: 3px;
+    border-top-right-radius: 80px 80px;
+    border-bottom-right-radius: 80px 80px;
+
+    border-left: 0cm;
+    border-color: #021526;
+  }
+
