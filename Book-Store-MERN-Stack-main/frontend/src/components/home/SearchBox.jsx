@@ -14,6 +14,8 @@ const SearchBox = ({  }) => {
      <button id='searchbtn'>Search</button>
      </form>
     </div>
+    
+    
   );
 };
 

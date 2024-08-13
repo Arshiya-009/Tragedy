@@ -17,11 +17,15 @@ const Home = () => {
   const [showType, setShowType] = useState('table');
   const title = searchParams.get("q");
   const author = searchParams.get("p");
+  const genre = searchParams.get("genre");
 
   useEffect(() => {
     let url  = 'http://localhost:5555/books';
     if(title){
       url = `http://localhost:5555/books?title=${title}&author=${author}`;
+    }
+    if(genre){
+      url = `http://localhost:5555/books?genre=${genre}`;
     }
     setLoading(true);
     axios
@@ -37,6 +41,7 @@ const Home = () => {
   }, []);
 
   return (
+
     <div className='p-4'>
       <div className='flex justify-center items-center gap-x-4'>
         <button 
@@ -59,8 +64,30 @@ const Home = () => {
         <Link to='/books/create'>
           <MdOutlineAddBox className='text-sky-800 text-4xl' />
         </Link>
+        <div class="dropdown">
+<button class="dropbtn">Dropdown</button>
+<div class="dropdown-content">
+<a href="?">All</a>
+
+<a href="?genre=Romantic">Romantic</a>
+        <a href="?genre=Classical">Classical</a>
+        <a href="?genre=Horror">Horror</a>
+        <a href="?genre=Drama">Drama</a>
+        <a href="?genre=Crime">Crime</a>
+        <a href="?genre=Comedy">Comedy</a>
+        <a href="?genre=Comic">Comic</a>
+        <a href="?genre=Adventure">Adventure</a>
+        <a href="?genre=Tragedy">Tragedy</a>
+        <a href="?genre=Puzzle">Puzzle</a>
+</div>
+</div>
+
       </div>
       <SearchBox></SearchBox>
+      {/* <div className='flex justify-center items-center gap-x-4'> */}
+
+{/* </div> */}
+
 
       {loading ? (
         <Spinner />

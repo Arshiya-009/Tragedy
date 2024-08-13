@@ -63,6 +63,9 @@ router.get('/', async (request, response) => {
            { author: { "$regex": request.query.title, "$options": "i" } }]
       }
     }
+    if (request.query.genre) {
+      query.genre = request.query.genre      
+    }
 
     books = await Book.find(query);
 

@@ -57,6 +57,12 @@ const ShowBook = () => {
             <img src={`http://localhost:5555/${book.title}.jpg`} width="250px" alt="" />
           </div>
           <div className='my-4'>
+            <span className='text-xl mr-4 text-gray-500'>Genre : </span>
+            <span> {book.genre}</span>
+            {/* {new Date(book.createdAt).toString()} */}
+          </div>
+
+          <div className='my-4'>
             <span className='text-xl mr-4 text-gray-500'>About Book : </span>
             <span> {book.description}</span>
             {/* {new Date(book.createdAt).toString()} */}

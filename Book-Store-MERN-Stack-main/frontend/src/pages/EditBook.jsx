@@ -38,7 +38,8 @@ const EditBook = () => {
       title,
       author,
       publishYear,
-      description
+      description,
+      genre
     };
     setLoading(true);
     axios
@@ -99,15 +100,21 @@ const EditBook = () => {
             className='border-2 border-gray-500 px-4 py-2  w-full '
           />
         </div>
-        <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Genre</label>
-          <input
-            type='text'
-            value={genre}
-            onChange={(e) => setGenre(e.target.value)}
-            className='border-2 border-gray-500 px-4 py-2  w-full '
-          />
-        </div>
+        <select name="cars" id="cars" value={genre} onChange={(e) => setGenre(e.target.value)}
+            className='border-2 border-gray-500 px-4 py-2  w-full '>
+            <option value="" selected disabled hidden>Choose here</option>
+            <option value="Romantic">Romantic</option>
+            <option value="Classical">Classical</option>
+            <option value="Horror">Horror</option>
+            <option value="Drama">Drama</option>
+            <option value="Crime">Crime</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Comic">Comic</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Tragedy">Tragedy</option>
+            <option value="Puzzle">Puzzle</option>
+          </select>
+
 
         <button className='p-2 bg-sky-300 m-8' onClick={handleEditBook}>
           Save

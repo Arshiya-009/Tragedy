@@ -21,7 +21,8 @@ const CreateBooks = () => {
       title,
       author,
       publishYear,
-      description
+      description,
+      genre
     };
     setLoading(true);
     axios
@@ -49,7 +50,7 @@ const CreateBooks = () => {
           <label className='text-xl mr-4 text-gray-2'>Title</label>
           <input
             type='text'
-            value = {title}
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
             className='border-2 border-gray-500 px-4 py-2 w-full'
           />
@@ -83,12 +84,27 @@ const CreateBooks = () => {
         </div>
         <div className='my-8'>
           <label className='text-xl mr-4 text-gray-1'>  Genre</label>
-          <input
-            type='text'
+          {/* <input
+            type=''
             value={genre}
             onChange={(e) => setGenre(e.target.value)}
             className='border-2 border-gray-500 px-4 py-2  w-full '
-          />
+          /> */}
+          <select name="cars" id="cars" value={genre} onChange={(e) => setGenre(e.target.value)}
+            className='border-2 border-gray-500 px-4 py-2  w-full '>
+            <option value="Romantic">Romantic</option>
+            <option value="Classical">Classical</option>
+            <option value="Horror">Horror</option>
+            <option value="Drama">Drama</option>
+            <option value="Crime">Crime</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Comic">Comic</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Tragedy">Tragedy</option>
+            <option value="Puzzle">Puzzle</option>
+          </select>
+
+
         </div>
         <button id='savebutton' className='p-2 bg-sky-300 m-8' onClick={handleSaveBook}>
           Save
