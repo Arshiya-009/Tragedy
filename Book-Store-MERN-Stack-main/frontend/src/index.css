@@ -94,6 +94,7 @@
 
   }
 
+
   #searchbtn{
     background-color: #2a5383;;
     color: wheat;
@@ -106,4 +107,16 @@
     border-left: 0cm;
     border-color: #021526;
   }
+
+  label{
+    color:wheat;
+    
+  }
+  #savebutton{
+    color: #2a5383 ;
+    background-color: wheat ;
+  }
+span{
+  color: wheat;
+}
 
